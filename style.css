@@ -109,3 +109,38 @@
  .task-text:hover {
      font-weight: bold;
  }
+
+ /* Група вводу */
+ .task-input {
+     display: flex;
+     padding: 10px 10px;
+     gap: 10px;
+     margin-bottom: 20px;
+ }
+
+ input[type="text"] {
+     flex: 1;
+     padding: 10px;
+     border: 2px solid green;
+     border-radius: 6px;
+     outline: none;
+     transition: border-color 0.3s;
+ }
+
+ input[type="text"]:focus {
+     border-color: forestgreen;
+ }
+
+ #add-btn {
+     padding: 10px 20px;
+     background-color: green;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     cursor: pointer;
+     font-weight: bold;
+ }
+
+ #add-btn:hover {
+     background-color: forestgreen;
+ }
