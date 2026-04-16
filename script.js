@@ -3,7 +3,7 @@ const input = document.getElementById('task-input');
 const addBtn = document.getElementById('add-btn');
 const taskList = document.getElementById('task-list');
 
-// Функція для створення нового завдання
+// Функція для створення нового завдання з кнопкою видалення
 function addTask() {
     const taskText = input.value.trim();
 
@@ -12,16 +12,24 @@ function addTask() {
         return;
     }
 
-    // Створюємо елемент завдання (наш контейнер label)
+    // Створюємо елемент завдання (контейнер label)
     const label = document.createElement('label');
     label.className = 'task-list-item';
 
-    // Наповнюємо його структурними елементами
+    // Наповнюємо його (класи task-checkmark та task-text для твого CSS)
     label.innerHTML = `
         <input type="checkbox">
-        <span class="checkmark"></span>
-        <span class="text">${taskText}</span>
+        <span class="task-checkmark"></span>
+        <span class="task-text">${taskText}</span>
+        <button class="delete-btn" title="Видалити завдання">✖</button>
     `;
+
+    // Додаємо подію для нової кнопки видалення
+    const deleteBtn = label.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Запобігаємо спрацюванню чекбокса при натисканні на кнопку
+        label.remove();
+    });
 
     // Додаємо нове завдання в список
     taskList.appendChild(label);
@@ -31,12 +39,24 @@ function addTask() {
     input.focus();
 }
 
-// Додаємо слухач кліку по кнопці "Додати"
-addBtn.addEventListener('click', addTask);
+// Функція для обробки подій на СТАТИЧНИХ елементах (тих, що вже були в HTML)
+function attachTaskEvents(label) {
+    const deleteBtn = label.querySelector('.delete-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            label.remove();
+        });
+    }
+}
 
-// Дозволяємо додавати завдання натисканням клавіші Enter
+// Слухачі подій для кнопки та клавіші Enter
+addBtn.addEventListener('click', addTask);
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         addTask();
     }
 });
+
+// Навішуємо видалення на ті завдання, які вже були прописані в index.html
+document.querySelectorAll('#task-list label').forEach(attachTaskEvents);
