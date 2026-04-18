@@ -39,6 +39,13 @@ function createTaskListElement(taskText, isCompleted) {
 function attachTaskListEvents(label) {
     const textSpan = label.querySelector('.task-text');
 
+    // Запобігаємо спрацюванню події для label 
+    // при кліку на тексті завданні
+    textSpan.addEventListener('click', (e) => {
+        e.preventDefault();
+    });
+
+
     // Зберігаємо зміни при втраті фокусу (blur)
     textSpan.addEventListener('blur', () => {
         if (textSpan.innerText.trim() === "") {
