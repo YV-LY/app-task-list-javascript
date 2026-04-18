@@ -3,7 +3,7 @@
 <br>
 <p> Для перегляду вебзастосування локально послідовно виконайте наступні команди:</p>
 <ol>
-  <li> <code> git clone https://github.com/YuriiKlimyuk/app-task-list-javascript.git </code>, щоб клонувати репозиторій на локальний комп’ютер; </li>
+  <li> <code> git clone https://github.com/yv-ly/app-task-list-javascript </code>, щоб клонувати репозиторій на локальний комп’ютер; </li>
   <li> <code> cd app-task-list-javascript </code>, щоб перейти в папку app-task-list-javascript; </li>
   <li> <code> start index.html </code>, щоб переглянути вебзастосування у браузері. </li>
 </ol>
